@@ -9,6 +9,19 @@
             "command": "cmd",
             "args": ["/c", "echo Husky.Net is awesome!" ]
          }
-      }
+      },
+      {
+      "name": "commit-message-linter",
+      "command": "dotnet",
+      "args": [ "husky", "exec", ".husky/csx/commit-lint.csx", "--args", "${args}" ]
+    },
+    {
+   "name": "secret-scan",
+   "group": "pre-commit",
+   "command": "dotnet",
+   "args": [ "husky", "exec", ".husky/csx/secret-scan.csx", "--args", "${staged}" ],
+   "include": [ "**/*" ],
+   "output": "always"
+   }
    ]
 }
