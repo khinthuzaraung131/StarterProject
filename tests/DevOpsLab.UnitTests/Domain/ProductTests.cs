@@ -135,6 +135,6 @@ public class ProductTests
 
         product.Restock(5);
 
-        Assert.Equal(16, product.StockQuantity);
+        Assert.Equal(15, product.StockQuantity);
     }
 }
