@@ -1,0 +1,43 @@
+   name: four-pipelines
+   on:
+     push:
+       branches: [ci/first-pipeline]
+
+   jobs:
+     p1:
+       runs-on: ubuntu-24.04
+       steps:
+         - uses: actions/checkout@v7
+         - uses: actions/setup-dotnet@v6
+           with:
+             dotnet-version: '8.0.x'
+         - run: dotnet test tests/DevOpsLab.UnitTests
+
+     p2:
+       runs-on: ubuntu-24.04
+       steps:
+         - uses: actions/checkout@v7
+         - uses: actions/setup-dotnet@v6
+           with:
+             dotnet-version: '8.0.x'
+         - run: dotnet test tests/DevOpsLab.UnitTests | tee test.log
+
+     p3:
+       runs-on: ubuntu-24.04
+       steps:
+         - uses: actions/checkout@v7
+         - uses: actions/setup-dotnet@v6
+           with:
+             dotnet-version: '8.0.x'
+         - shell: bash
+           run: dotnet test tests/DevOpsLab.UnitTests | tee test.log
+
+     p4:
+       runs-on: ubuntu-24.04
+       steps:
+         - uses: actions/checkout@v7
+         - uses: actions/setup-dotnet@v6
+           with:
+             dotnet-version: '8.0.x'
+         - continue-on-error: true
+           run: dotnet test tests/DevOpsLab.UnitTests
