@@ -7,7 +7,7 @@ namespace DevOpsLab.Application.Products;
 
 public sealed class ProductService
 {
-    public const int MaxPageSize = 100;
+    public const int MaxPageSize = 100
 
     private readonly IProductRepository _products;
     private readonly ICategoryRepository _categories;
