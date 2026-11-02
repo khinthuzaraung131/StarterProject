@@ -14,7 +14,7 @@ public sealed class Product
     public const int NameMaxLength = 200;
 
     /// <summary>A single price change may not raise the price by more than this factor.</summary>
-    public const decimal MaxPriceIncreaseFactor = 1.50m;
+    public const decimal MaxPriceIncreaseFactor = 2.00m;
 
     private Product() { Sku = string.Empty; Name = string.Empty; }
 
