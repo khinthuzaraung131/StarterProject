@@ -31,5 +31,6 @@ EXPOSE 8080
 COPY --from=build /app/publish .
 
 USER app
+USER root
 
 ENTRYPOINT ["dotnet", "DevOpsLab.WebApi.dll"]
