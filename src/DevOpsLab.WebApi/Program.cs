@@ -1,3 +1,4 @@
+using System.Reflection;
 using DevOpsLab.Application.Products;
 using DevOpsLab.Infrastructure;
 using DevOpsLab.Infrastructure.Persistence;
@@ -47,7 +48,9 @@ app.MapProductEndpoints();
 app.MapGet("/", () => Results.Ok(new
 {
     service = "DevOpsLab.WebApi",
-    version = typeof(Program).Assembly.GetName().Version?.ToString() ?? "0.0.0",
+    version = typeof(Program).Assembly
+        .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
+        .InformationalVersion ?? "0.0.0",
     docs = "/swagger",
     liveness = "/healthz/live",
     readiness = "/healthz/ready"
