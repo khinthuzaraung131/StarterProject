@@ -48,9 +48,8 @@ app.MapProductEndpoints();
 app.MapGet("/", () => Results.Ok(new
 {
     service = "DevOpsLab.WebApi",
-    version = typeof(Program).Assembly
-        .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
-        .InformationalVersion ?? "0.0.0",
+    environment = app.Environment.EnvironmentName,
+    version = typeof(Program).Assembly.GetName().Version?.ToString() ?? "0.0.0",
     docs = "/swagger",
     liveness = "/healthz/live",
     readiness = "/healthz/ready"
